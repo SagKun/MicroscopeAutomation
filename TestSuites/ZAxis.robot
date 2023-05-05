@@ -6,6 +6,9 @@ Library  Validations.ValidateZAxisMovement  ${microscope_config_path}   ${laser_
 Suite Setup
 Suite Teardown
 
+
+
+
 *** Test Cases ***
 Move Z Sanity
     [Tags]  Sanity  Motor
