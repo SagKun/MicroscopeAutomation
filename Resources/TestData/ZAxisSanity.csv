@@ -1,0 +1,5 @@
+x step,y step,z step,expected status
+1,2,3,success
+4,5,6,failure
+7,8,9,success
+10,11,12,success

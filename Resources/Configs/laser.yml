@@ -1,0 +1,30 @@
+# Interferometer settings
+unit: mm
+
+interferometer:
+  wavelength: 632.8 # wavelength of laser light in nm
+  mirror_distance: 10 # distance between mirrors in cm
+  measurement_type: absolute # type of measurement (absolute or relative)
+
+# Time-of-flight settings
+time_of_flight:
+  laser_pulse_width: 10 # width of laser pulse in ns
+  target_distance: 100 # distance to target in m
+  measurement_type: single_shot # type of measurement (single_shot or continuous)
+
+# Triangulation settings
+triangulation:
+  laser_power: 5 # power of laser in mW
+  angle_range: [-10, 10] # range of angles to measure in degrees
+  measurement_type: average # type of measurement (single or average)
+
+# Confocal microscopy settings
+confocal_microscopy:
+  laser_wavelength: 488 # wavelength of laser in nm
+  numerical_aperture: 0.8 # numerical aperture of objective lens
+  focus_position: 10 # position of focus in um
+
+# Holographic measurement settings
+holographic_measurement:
+  laser_power: 10 # power of laser in mW
+  reference_distance: 50 # distance to reference point in cm

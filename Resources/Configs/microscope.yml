@@ -1,0 +1,6 @@
+motor:
+  z_axis_min_step: 1
+  z_axis_upper_step_limit: 20
+  z_step_to_mm_ratio: 10
+  z_step_min_range: 30
+  z_step_max_range: 3000
