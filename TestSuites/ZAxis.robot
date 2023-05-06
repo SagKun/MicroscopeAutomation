@@ -18,7 +18,7 @@ Move Z Sanity
     [Tags]  Sanity  Motor
     ${setup_result}=    setup zaxis test
     should be true      ${setup_result}
-    ${data}=    read csv    ZAxisSanity.csv
+    ${data}=    read csv    Resources\\TestData\\ZAxisSanity.csv
     ${test_result}=  run zaxis sanity  ${data}
     should be true      ${test_result}
 
