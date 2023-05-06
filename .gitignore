@@ -20,3 +20,6 @@ env/
 *.env.local
 *.log
 *.log.*
+
+
+env.yml
