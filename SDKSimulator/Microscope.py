@@ -58,6 +58,7 @@ class Microscope:
             motor_new_vector[2] = self.z_step_min_range
             self.motor_status = "failure"
         self.motor_current_vector = motor_new_vector
+        time.sleep(0.5)
         return {"position": self.motor_current_vector, "status": self.motor_status}
 
     def get_motor_status(self):

@@ -56,19 +56,26 @@ class ValidateZAxisMovement:
         gets a laser distance measurement,moves the microscope according to the data row,takes
         another laser distance measurement and compares all the expected results in the data row,
         to the actual results.
-        :param action_df: an action dataframe
+        :param action_df: a test actions pandas dataframe parsed from a csv file.
         :return:
         """
         motor_start_position,_ = self.microscope_controller.get_motor_status()
-        laser_reading_prior_movement =  self.laser_controller.get_distance_reading(30.0)
+
         for _, row in action_df.iterrows():
+            #creating the expected values
             vector_to_move = np.array([int(row["x_step"]), int(row["y_step"]), int(row["z_step"])])
             expected_position = np.copy(motor_start_position)
             expected_position[2]=int(row["should_be_in_step_z"])
             should_move_mm, expected_status = float(row["should_move_mm"]), row["expected_status"]
+
+            # im faking the laser values,so i'm passing the reading I want to get back,
+            # in real life there might be an error tolerance I might need to handle
+            laser_reading_prior_movement = self.laser_controller.get_distance_reading()
             actual_position, actual_status = self.microscope_controller.move_motor(vector_to_move)
-            laser_reading_after_movement = self.laser_controller.get_distance_reading(laser_reading_prior_movement - should_move_mm)
+            laser_reading_after_movement = self.laser_controller.get_distance_reading(should_move_mm)
             actual_movement = round(laser_reading_prior_movement - laser_reading_after_movement,2)
+
+            ## check expected and actual values
             if not np.array_equal(expected_position, actual_position):
                 logger.error(
                     f"expected position: {expected_position} does not equal the actual position: {actual_position}")

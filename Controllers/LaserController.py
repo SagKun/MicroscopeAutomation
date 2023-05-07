@@ -7,7 +7,7 @@ class LaserController:
     def __init__(self, laser_config, connection_key):
         self.config = self.parse_config(laser_config)
         self.laser = Laser(self.config, connection_key)
-
+        self.laser_reading = 30
     def parse_config(self, config_file):
         with open(config_file) as file:
             laser_config = yaml.load(file, Loader=yaml.FullLoader)
@@ -21,10 +21,9 @@ class LaserController:
         """
         return self.laser.init_laser()
 
-    def get_distance_reading(self, reading_to_return):
+    def get_distance_reading(self, subtract_distance = 0):
         """
          requests a distance reading from the laser sdk/api.
-        :param reading_to_return: just passing the expected value for the demonstration
-        :return: float (distance reading)
+        :param subtract_distance: just for testing,to control how the reading will return
         """
-        return self.laser.get_reading(reading_to_return)
+        return self.laser.get_reading( self.laser_reading - subtract_distance)
